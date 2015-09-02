@@ -33,6 +33,7 @@ module LinkedList
       end
     end
 
+# NEED CASE FOR ADDING TO THE END AND MIDDLE
     def insert(node, location)
       @counter = 0
       if @head.nil? && location == 0
@@ -40,17 +41,15 @@ module LinkedList
       elsif location == 0
         node.following = @head
         @head = node
+      else
+        @counter = 1
+        current_position = @head
+        until current_position.tail? || location == @counter
+          @counter += 1
+          current_position = current_position.following
+        end
       end
-    #   else
-    #     @counter = 1
-    #     current_position = @head
-    #     until current_position.tail? || position == @counter
-    #       @counter += 1
-    #       current_position = current_position.following
-    #     end
-    #   end
-    #   @counter
-    # end
+      @list
     end
 
     def includes?(value)
@@ -98,8 +97,25 @@ module LinkedList
       @counter
     end
 
+    def head_value
+      if @head.nil?
+        return "The list is empty"
+      else
+        @head.value
+      end
+    end
 
-
+    def tail_value
+      if @head.nil?
+        return "There is no tail - the list is empty."
+      else
+        current_position = @head
+        until current_position.tail?
+          current_position = current_position.following
+        end
+        current_position.value
+      end
+    end
 
   end
 end
@@ -108,15 +124,20 @@ end
 @node_1 = LinkedList::Node.new(1)
 @node_2 = LinkedList::Node.new(2)
 @node_3 = LinkedList::Node.new(3)
+node_3 = LinkedList::Node.new(4)
 #
 #
 @list.append(@node_1)
 @list.append(@node_2)
 @list.append(@node_3)
+
 #
 # @node_1.following
 # @list.head.following.value
 #
 # @list.includes?(2)
-@list
-@list.count
+# @list                     # => #<LinkedList::List:0x007fa9a983a3d8 @head=#<LinkedList::Node:0x007fa9a983a018 @value=1, @following=#<LinkedList::Node:0x007fa9a9839de8 @value=2, @following=#<LinkedList::Node:0x007fa9a9839bb8 @value=3, @following=nil>>>>
+# @list.count               # => 3
+# @list.insert(@node_3, 3)  # => nil
+# @list.head_value          # => 1
+@list.tail_value

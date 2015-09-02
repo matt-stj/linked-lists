@@ -107,5 +107,29 @@ module LinkedList
       assert_equal 3, @list.count
     end
 
+    def test_head_value_will_return_message_if_querying_an_empty_list
+      @list
+      assert_equal  "The list is empty", @list.head_value
+    end
+
+    def test_the_value_inside_the_first_node_is_returned_when_the_head_value_method_is_called
+      @list.append(@node_1)
+      @list.head_value
+      assert_equal 1, @list.head_value
+    end
+
+    def test_tail_value_will_return_message_if_querying_an_empty_list
+      @list
+      assert_equal "There is no tail - the list is empty.", @list.tail_value
+    end
+
+    def test_tail_value_is_returned_properly
+      @list
+      @list.append(@node_1)
+      @list.append(@node_2)
+      @list.append(@node_3)
+      assert_equal 3, @list.tail_value
+    end
+
   end
 end
