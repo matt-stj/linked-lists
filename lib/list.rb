@@ -1,35 +1,54 @@
-require_relative 'node'  # => true
+require_relative 'node'
 
 module LinkedList
   class List
 
-    attr_accessor :head  # => nil
+    attr_accessor :head
 
     def initialize(head = nil)
-      @head = head              # => nil
-    end                         # => :initialize
+      @head = head
+    end
 
     def append(node)
-      if @head.nil?                                      # => true, false
-        @head = node                                     # => #<LinkedList::Node:0x007f8f198c0b90 @value=1, @following=nil>
+      if @head.nil?
+        @head = node
       else
-        current_position = @head                         # => #<LinkedList::Node:0x007f8f198c0b90 @value=1, @following=nil>
-        until node.tail?                                 # => true
+        current_position = @head
+        until node.tail?
           current_position = current_position.following
-        end                                              # => nil
+        end
 
-        current_position.following = node  # => #<LinkedList::Node:0x007f8f198c08e8 @value=2, @following=nil>
-      end                                  # => #<LinkedList::Node:0x007f8f198c0b90 @value=1, @following=nil>, #<LinkedList::Node:0x007f8f198c08e8 @value=2, @following=nil>
-    end                                    # => :append
+        current_position.following = node
+      end
+    end
+
+    def prepend(node)
+      if @head.nil?
+        @head = node
+      else
+        node.following = @head
+        @head = node
+      end
+    end
+
+    def insert(node)
+    end
+
+  end
+end
+
+@list = LinkedList::List.new()
+@node_1 = LinkedList::Node.new(1)
+@node_2 = LinkedList::Node.new(2)
+@node_3 = LinkedList::Node.new(3)
 
 
-  end  # => :append
-end    # => :append
+@list.append(@node_1)
+@list.append(@node_2)
 
-@list = LinkedList::List.new()     # => #<LinkedList::List:0x007f8f198c0fc8 @head=nil>
-@node_1 = LinkedList::Node.new(1)  # => #<LinkedList::Node:0x007f8f198c0b90 @value=1, @following=nil>
-@node_2 = LinkedList::Node.new(2)  # => #<LinkedList::Node:0x007f8f198c08e8 @value=2, @following=nil>
+@node_1.following
+@list.head
 
+@list.inspect
 
-@list.append(@node_1)  # => #<LinkedList::Node:0x007f8f198c0b90 @value=1, @following=nil>
-@list.append(@node_2)  # => #<LinkedList::Node:0x007f8f198c08e8 @value=2, @following=nil>
+@list.prepend(@node_3)

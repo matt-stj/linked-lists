@@ -27,7 +27,22 @@ module LinkedList
       assert @node_2.tail?
       assert_equal @node_2, @node_1.following
     end
-    
 
+    def test_we_can_prepend_a_node_to_an_empty_list
+      @list.prepend(@node_1)
+      assert_equal @node_1, @list.head
+    end
+
+    def test_we_can_prepend_a_node_to_a_populated_list
+      @list.append(@node_1)
+      assert_equal @node_1, @list.head
+      @list.prepend(@node_2)
+      assert_equal @node_2, @list.head
+      assert_equal @node_1, @list.head.following
+    end
+
+    def test_we_can_insert_values_into_the_list
+      skip
+    end
   end
 end

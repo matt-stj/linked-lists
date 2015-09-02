@@ -17,5 +17,3 @@ module LinkedList
 
   end
 end
-
-LinkedList::Node.new("hi").tail?
