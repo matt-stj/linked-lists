@@ -229,5 +229,13 @@ module LinkedList
       assert_equal "value doesn't exist", @list.remove_by_value(100)
     end
 
+    def test_find_distance_will_tell_us_the_distance_between_two_nodes
+      @list.append(@node_1)
+      @list.append(@node_2)
+      @list.append(@node_3)
+      @list.append(@node_4)
+      assert_equal 3, @list.find_distance(@node_1, @node_4)
+    end
+
   end
 end
