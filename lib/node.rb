@@ -1,19 +1,15 @@
 module LinkedList
   class Node
-
-    @count = 0  # => 0
-
-    attr_accessor :value, :following  # => nil
+    attr_accessor :value, :following
 
     def initialize(value, following = nil)
       @value = value
       @following = following
-    end                                     # => :initialize
+    end
 
     def tail?
       @following.nil?
-    end                # => :tail?
+    end
 
-
-  end  # => :tail?
-end    # => :tail?
+  end
+end

@@ -4,9 +4,8 @@ require_relative '../lib/node'
 
 module LinkedList
   class ListTest < Minitest::Test
-
     def setup
-      @list = LinkedList::List.new()
+      @list = LinkedList::List.new
       @node_1 = LinkedList::Node.new(1)
       @node_2 = LinkedList::Node.new(2)
       @node_3 = LinkedList::Node.new(3)
@@ -14,12 +13,12 @@ module LinkedList
     end
 
     def test_the_head_is_nil_for_an_empty_list
-     assert_equal nil, @list.head
+      assert_equal nil, @list.head
     end
 
     def test_an_appended_node_can_become_the_head
-     @list.append(@node_1)
-     assert_equal @node_1, @list.head
+      @list.append(@node_1)
+      assert_equal @node_1, @list.head
     end
 
     def test_a_node_can_be_appended_to_a_list
@@ -96,12 +95,10 @@ module LinkedList
     end
 
     def test_wont_break_when_popping_an_empty_list
-      @list
       assert_equal "Can't pop an empty list", @list.pop
     end
 
     def test_calling_count_will_notify_us_if_list_is_empty
-      @list
       assert_equal "The list is empty", @list.count
     end
 
@@ -113,23 +110,20 @@ module LinkedList
     end
 
     def test_head_value_will_return_message_if_querying_an_empty_list
-      @list
-      assert_equal  "The list is empty", @list.head_value
+      assert_equal "The list is empty", @list.head_value
     end
 
-    def test_the_value_inside_the_first_node_is_returned_when_the_head_value_method_is_called
+    def test_the_value_of_first_node_returned_when_the_head_is_called
       @list.append(@node_1)
       @list.head_value
       assert_equal 1, @list.head_value
     end
 
     def test_tail_value_will_return_message_if_querying_an_empty_list
-      @list
       assert_equal "There is no tail - the list is empty.", @list.tail_value
     end
 
     def test_tail_value_is_returned_properly
-      @list
       @list.append(@node_1)
       @list.append(@node_2)
       @list.append(@node_3)
@@ -137,12 +131,10 @@ module LinkedList
     end
 
     def test_find_by_index_throws_a_message_if_empty_list
-      @list
       assert_equal "The list is empty", @list.find_by_index(0)
     end
 
     def test_find_by_index_will_return_the_value_of_the_head_node
-      @list
       @list.append(@node_1)
       assert @node_1.value == 1
       assert_equal 1, @list.find_by_index(0)
@@ -162,7 +154,6 @@ module LinkedList
     end
 
     def test_find_by_value_will_throw_a_message_if_empty_list
-      @list
       assert_equal "The list is empty", @list.find_by_value(0)
     end
 
